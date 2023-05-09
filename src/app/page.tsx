@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Stack, Typography, Box } from '@mui/material';
 import styles from './page.module.css';
 import HomeBody from '@/components/HomeBody';
+
 export default function Home() {
   return (
     <>

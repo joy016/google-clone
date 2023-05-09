@@ -35,8 +35,7 @@ const HomeBody = () => {
   const { GetRandomWord } = useFetchRandomWord();
   const { data: randomWord } = GetRandomWord();
   const [loading, setLoading] = useState(false);
-
-  console.log('random', randomWord);
+  const [input, setInput] = useState('');
 
   const handleSearchRandom = () => {
     setLoading(true);
@@ -45,19 +44,38 @@ const HomeBody = () => {
     setLoading(false);
   };
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (!input) return;
+    router.push(`/search/web?searchTerm=${input}`);
+  };
+
   return (
     <>
-      <Box sx={{ width: '50em' }}>
+      <Box
+        sx={{
+          width: {
+            md: '50em',
+          },
+        }}
+        component="form"
+        onSubmit={handleSubmit}
+      >
         <FormControl
           fullWidth
           sx={{
             m: 1,
+            width: '100%',
             borderRadius: '50%,',
           }}
           variant="outlined"
         >
           <OutlinedInput
+            onChange={(e) => setInput(e.target.value)}
+            value={input}
             sx={{
+              width: '100%',
               borderRadius: '30px',
               boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.2)',
             }}
@@ -78,6 +96,7 @@ const HomeBody = () => {
               'aria-label': 'weight',
             }}
           />
+
           <Stack
             direction="row"
             spacing={2}
@@ -91,6 +110,7 @@ const HomeBody = () => {
               /*
               // @ts-ignore */
               color="grey"
+              type="submit"
             >
               Google Search
             </StyledButton>
@@ -103,6 +123,7 @@ const HomeBody = () => {
               /*
               // @ts-ignore */
               color="grey"
+              type="button"
             >
               <span>I Am Feeling Lucky</span>
             </StyledLoadingButton>

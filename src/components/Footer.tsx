@@ -21,6 +21,7 @@ const StyledTypography = styled(Typography)({
 const StyledListText = styled(ListItemText)({
   fontFamily: 'arial,sans-serif',
   color: '#70757a',
+  textAlign: 'center',
   '&:hover': {
     textDecoration: 'underline',
     cursor: 'pointer',
@@ -31,7 +32,6 @@ const Footer = () => {
   const { GetCountry } = useFetch();
   const { data: country } = GetCountry();
 
-  console.log('todos', country);
   return (
     <footer>
       <Box sx={{ backgroundColor: '#f2f2f2' }}>
@@ -45,8 +45,15 @@ const Footer = () => {
         </Box>
         <Box
           sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
+            // display: 'flex',
+            display: {
+              sm: 'flex-column',
+              md: 'flex',
+            },
+            justifyContent: {
+              sm: 'center',
+              md: 'space-between ',
+            },
             padding: '0 20px',
           }}
         >
