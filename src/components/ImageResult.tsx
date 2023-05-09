@@ -21,7 +21,7 @@ const App: React.FC<AppProps> = ({ ImageRes }) => {
     <Grid
       container
       spacing={{ xs: 2, md: 2 }}
-      columns={{ xs: 4, sm: 8, md: 15 }}
+      // columns={{ xs: 4, sm: 8, md: 15 }}
       sx={{ padding: '30px', width: 'calc(100%-30px)' }}
     >
       {ImageRes.map(({ title, image, displayLink }) => {
@@ -32,6 +32,7 @@ const App: React.FC<AppProps> = ({ ImageRes }) => {
             item
             sm={6}
             md={3}
+            lg={2}
             sx={{ display: 'flex', flexDirection: 'column' }}
           >
             <Card sx={{ maxWidth: 345, height: 160 }}>
@@ -44,6 +45,7 @@ const App: React.FC<AppProps> = ({ ImageRes }) => {
             <Box
               sx={{
                 display: 'flex',
+                width: '100%',
                 flexDirection: 'column',
                 ':hover': {
                   textDecoration: 'underline',
